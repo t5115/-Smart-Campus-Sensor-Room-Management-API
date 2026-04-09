@@ -82,5 +82,9 @@ public Response deleteRoom(@PathParam("roomId") String roomId) {
 
     return Response.noContent().build(); // 204
 }
+
+public static Map<String, Room> getRooms() {
+    return rooms;
+}
 }
 
