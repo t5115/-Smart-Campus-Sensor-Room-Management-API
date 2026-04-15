@@ -103,4 +103,14 @@ public Response updateStatus(Map<String, String> request) {
     return Response.ok(sensor).build();
 }
 
+//intentional crash for testing GlobalExceptionMapper
+@GET
+@Path("/test-500")
+public Response test500() {
+
+    Sensor sensor = null;
+
+    return Response.ok(sensor.getStatus()).build();
+}
+
 }
