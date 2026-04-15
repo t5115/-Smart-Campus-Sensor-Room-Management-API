@@ -28,6 +28,14 @@ public class SensorReadingResource {
 
     @POST
     public Response addReading(Reading reading) {
+        
+        // Sensor in maintenance cannot accept readings
+        if ("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())) {
+            throw new SensorUnavailableException(
+                    "Sensor with ID: " + sensor.getId() + " is in MAINTENANCE and cannot accept readings"
+            );
+        }
+        
         sensor.addReading(reading);
         
         sensor.setCurrentValue(reading.getValue());

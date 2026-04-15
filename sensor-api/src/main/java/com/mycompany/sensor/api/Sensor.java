@@ -17,6 +17,7 @@ public class Sensor {
     private String type;
     private String roomId;
     private double currentValue;
+    private String status;
     private final List<Reading> readings = new ArrayList<>();
 
     public Sensor() {}
@@ -67,5 +68,13 @@ public class Sensor {
     
     public void setCurrentValue(double currentValue) {
         this.currentValue = currentValue;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -4,17 +4,12 @@
  */
 package com.mycompany.sensor.api;
 
-import javax.ws.rs.core.Application;
-import javax.ws.rs.ApplicationPath;
-
 /**
  *
  * @author tahmi
  */
-
-@ApplicationPath("/api/v1")
-public class ApplicationConfig extends Application {
-    
+public class RoomNotEmptyException  extends RuntimeException {
+     public RoomNotEmptyException(String message) {
+        super(message);
+    }
 }
-
-//All code written to be obvious without comments as much as possible.

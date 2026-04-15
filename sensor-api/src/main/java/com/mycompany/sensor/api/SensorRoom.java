@@ -73,9 +73,9 @@ public Response deleteRoom(@PathParam("roomId") String roomId) {
 
     // Business rule: cannot delete if sensors exist
     if (room.hasSensors()) {
-        return Response.status(Response.Status.CONFLICT)
-                .entity("{\"error\":\"Room cannot be deleted because it has active sensors\"}")
-                .build();
+        throw new RoomNotEmptyException(
+                "Room " + roomId + " cannot be deleted because it has active sensors"
+        );
     }
 
     rooms.remove(roomId);

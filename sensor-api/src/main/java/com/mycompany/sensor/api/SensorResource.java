@@ -34,14 +34,15 @@ public Response createSensor(Sensor sensor) {
     Room room = SensorRoom.getRooms().get(sensor.getRoomId());
 
     if (room == null) {
-        return Response.status(Response.Status.NOT_FOUND)
-                .entity("{\"error\":\"Room does not exist\"}")
-                .build();
+        throw new LinkedResourceNotFoundException(
+                "Room with id " + sensor.getRoomId() + " does not exist"
+        );
     }
 
     String id = UUID.randomUUID().toString();
     sensor.setId(id);
-
+    sensor.setStatus("ACTIVE");
+    
     sensors.put(id, sensor);
     
     room.getSensors().add(id);
@@ -74,4 +75,32 @@ public SensorReadingResource getSensorReadingResource(@PathParam("sensorId") Str
 
     return new SensorReadingResource(sensor);
 }
+
+// To UPDATE! sensor state ;-;
+@PUT
+@Consumes(MediaType.APPLICATION_JSON)
+public Response updateStatus(Map<String, String> request) {
+
+    String sensorId = request.get("id");
+    String status = request.get("status");
+
+    if (sensorId == null || status == null) {
+        return Response.status(Response.Status.BAD_REQUEST)
+                .entity("{\"error\":\"id and status are required\"}")
+                .build();
+    }
+
+    Sensor sensor = sensors.get(sensorId);
+
+    if (sensor == null) {
+        return Response.status(Response.Status.NOT_FOUND)
+                .entity("{\"error\":\"Sensor not found\"}")
+                .build();
+    }
+
+    sensor.setStatus(status.toUpperCase());
+
+    return Response.ok(sensor).build();
+}
+
 }
