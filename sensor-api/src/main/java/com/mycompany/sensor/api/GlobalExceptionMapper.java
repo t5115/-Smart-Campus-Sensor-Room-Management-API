@@ -8,6 +8,7 @@ package com.mycompany.sensor.api;
  *
  * @author tahmi
  */
+import java.util.logging.Logger;
 import javax.ws.rs.core.*;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -16,8 +17,15 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class GlobalExceptionMapper implements ExceptionMapper<Throwable> {
 
+    private static final Logger logger =
+            Logger.getLogger(GlobalExceptionMapper.class.getName());
+
     @Override
     public Response toResponse(Throwable ex) {
+
+      
+        logger.severe("Unhandled exception caught: " + ex.getMessage());
+        ex.printStackTrace();
 
         return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                 .entity(new ErrorResponse(
