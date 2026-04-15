@@ -62,4 +62,16 @@ public Collection<Sensor> getSensors(@QueryParam("type") String type) {
             .filter(sensor -> type.equalsIgnoreCase(sensor.getType()))
             .toList();
 }
+// Task 4:
+@Path("{sensorId}/reading")
+public SensorReadingResource getSensorReadingResource(@PathParam("sensorId") String sensorId) {
+    
+    Sensor sensor = sensors.get(sensorId);
+
+    if (sensor == null) {
+        throw new NotFoundException("Sensor not found");
+    }
+
+    return new SensorReadingResource(sensor);
+}
 }

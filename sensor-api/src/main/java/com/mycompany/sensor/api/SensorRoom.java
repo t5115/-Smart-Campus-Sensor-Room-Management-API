@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Consumes(MediaType.APPLICATION_JSON)
 public class SensorRoom {
     
-    // In-memory storage (shared across requests)
+    // In-memory storage 
     private static final Map<String, Room> rooms = new ConcurrentHashMap<>();
 
     // GET /api/v1/rooms

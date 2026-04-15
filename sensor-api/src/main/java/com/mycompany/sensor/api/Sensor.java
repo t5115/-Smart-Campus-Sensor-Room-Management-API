@@ -4,6 +4,9 @@
  */
 package com.mycompany.sensor.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author tahmi
@@ -13,6 +16,8 @@ public class Sensor {
     private String name;
     private String type;
     private String roomId;
+    private double currentValue;
+    private final List<Reading> readings = new ArrayList<>();
 
     public Sensor() {}
 
@@ -46,5 +51,21 @@ public class Sensor {
 
     public void setRoomId(String roomId) {
         this.roomId = roomId;
+    }
+    
+    public List<Reading> getReadings() {
+        return readings;
+    }
+
+    public void addReading(Reading reading) {
+        this.readings.add(reading);
+    }
+    
+    public double getCurrentValue() {
+        return currentValue;
+    }
+    
+    public void setCurrentValue(double currentValue) {
+        this.currentValue = currentValue;
     }
 }
