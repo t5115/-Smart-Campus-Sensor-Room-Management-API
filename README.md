@@ -73,8 +73,7 @@ Add Tomcat to NetBeans:
 - Right-click your project → Properties  
 - Go to Run  
 - Set:
-  - Server: Apache Tomcat  
-  - Context Path: /sensor-api (or leave default)  
+  - Server: Apache Tomcat   
 
 ### 6. Build the Project
 
@@ -92,13 +91,13 @@ This will:
 ## API Base URL
 
 ```
-http://localhost:8080/api/v1/rooms
+http://localhost:8080/api/v1/
 ```
 
 Example:
 
 ```
-http://localhost:8080/sensor-api/api/v1
+http://localhost:8080/sensor-api/api/v1/rooms
 ```
 
 ## Available Endpoints
@@ -163,7 +162,7 @@ curl -X POST http://localhost:8080/api/v1/rooms \
 ```bash
 curl -X POST http://localhost:8080/api/v1/sensors \
 -H "Content-Type: application/json" \
--d '{"name":"Temperature Sensor","type":"temperature","roomId":"71e1e8ae-f075-446d-a587-0998ae0e3427"}'
+-d '{"name":"Temperature Sensor","type":"temperature","roomId":"{room id here"}'
 ```
 
 ### 4. Get Sensors by Type (Query Parameter)
@@ -175,9 +174,15 @@ curl -X GET "http://localhost:8080/api/v1/sensors?type=temperature"
 ### 5. Update Sensor Status to MAINTENANCE
 
 ```bash
-curl -X PUT http://localhost:8080/api/v1/sensors/92c01d38-3c2a-4a04-b7b2-38441b9a8512/status \
+curl -X PUT http://localhost:8080/api/v1/sensors/
 -H "Content-Type: application/json" \
--d '{"id":"92c01d38-3c2a-4a04-b7b2-38441b9a8512","status":"MAINTENANCE"}'
+-d '{"id":"{sensor id here}","status":"MAINTENANCE"}'
+```
+
+### 6. Delete Room
+
+```bash
+curl -X DELETE  http://localhost:8080/api/v1/rooms{room id}
 ```
 
 ## Important Notes
