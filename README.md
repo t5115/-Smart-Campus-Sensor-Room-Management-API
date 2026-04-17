@@ -22,21 +22,38 @@ The API supports:
 
 ## How to Run the Project (Step-by-Step)
 
-### 1. Clone the Repository
+### 1. Clone the Repository (NetBeans Instructions)
+
+You can clone this repository directly using Apache NetBeans.
+
+#### Option 1: Clone inside NetBeans (Recommended)
+1. Open **Apache NetBeans**
+2. Go to **Team → Git → Clone...**
+3. In the **Repository URL** field, enter:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+https://github.com/t5115/-Smart-Campus-Sensor-Room-Management-API.git
+```
+4. Click **Next**
+5. Choose a local directory where the project will be stored
+6. Click **Finish**
+7. When prompted, click **Yes** to open the project
+
+#### Option 2: Open the Project Manually
+If the project does not open automatically:
+1. Go to **File → Open Project**
+2. Navigate to the cloned folder: -Smart-Campus-Sensor-Room-Management-API
+3. Select the folder and click **Open Project**
+
+#### Option 3: Clone Using Terminal (Optional)
+If you prefer using Git commands:
+
+```bash
+git clone https://github.com/t5115/-Smart-Campus-Sensor-Room-Management-API.git
+cd -Smart-Campus-Sensor-Room-Management-API
 ```
 
-### 2. Open Project in NetBeans
-
-- Open NetBeans  
-- Click File → Open Project  
-- Select the cloned project folder  
-- Wait for dependencies to load (Maven will auto-build)  
-
-### 3. Set Up Apache Tomcat
+### 4. Set Up Apache Tomcat
 
 If you don’t already have Tomcat:
 
@@ -51,7 +68,7 @@ Add Tomcat to NetBeans:
 - Browse to your Tomcat installation folder  
 - Finish setup  
 
-### 4. Configure Project to Use Tomcat
+### 5. Configure Project to Use Tomcat
 
 - Right-click your project → Properties  
 - Go to Run  
@@ -59,11 +76,11 @@ Add Tomcat to NetBeans:
   - Server: Apache Tomcat  
   - Context Path: /sensor-api (or leave default)  
 
-### 5. Build the Project
+### 6. Build the Project
 
 - Right-click project → Clean and Build  
 
-### 6. Run the Project
+### 7. Run the Project
 
 - Right-click project → Run  
 
